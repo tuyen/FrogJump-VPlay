@@ -12,4 +12,11 @@ Scene{
         anchors.fill: parent.gameWindowAnchorItem
         source: "../../assets/background.png"
     }
+    Frog
+    {
+        id: frog
+        x: gameScene.width/2
+        y: gameScene.height/2
+
+    }
 }
