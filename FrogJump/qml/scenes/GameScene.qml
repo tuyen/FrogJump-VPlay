@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import VPlay 2.0
 import QtSensors 5.5
-import "../"
+import "../object"
 
 Scene{
     id : gameScene

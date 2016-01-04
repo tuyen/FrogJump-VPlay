@@ -3,7 +3,8 @@ import QtQuick 2.0
 import "scenes"
 GameWindow {
     id: gameWindow
-
+    width: 320
+    height: 480
     activeScene: gameScene
 
     EntityManager{
