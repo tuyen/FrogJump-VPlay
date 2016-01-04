@@ -4,15 +4,15 @@ import VPlay 2.0
 EntityBase {
   id: leaf
 
-  entityType: "OldLeaf" // always name your entityTypes
+  entityType: "leaf" // always name your entityTypes
 
   width: 64 // visual width of our platform
   height: 32 // visual height of our platform
 
   Image {
     id: leafImg
-    source: "../../assets/old-leaf.png"
-    anchors.fill: oldLeaf
+    source: "../../assets/leaf.png"
+    anchors.fill: leaf
   }
 
   // BoxCollider responsible for collision detection

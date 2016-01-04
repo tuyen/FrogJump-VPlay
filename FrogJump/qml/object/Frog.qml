@@ -10,6 +10,7 @@ EntityBase
         id:frogAnimation
         defaultSource: "../../assets/spritesheet.png"
         scale: 0.35
+        anchors.centerIn: frogCollider
         SpriteVPlay
         {
             name: "sitting"
@@ -38,5 +39,19 @@ EntityBase
                 frogAnimation.jumpTo("sitting")
             }
        }
+
+    }
+    BoxCollider {
+      id: frogCollider
+
+      width: 25 // width of the frog collider
+      height: 5 // height of the frog collider
+
+      bodyType: Body.Dynamic
+
+      // handle collision
+      fixture.onContactChanged: {
+        frogCollider.linearVelocity.y = -400
+      }
     }
 }
