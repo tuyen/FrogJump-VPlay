@@ -9,7 +9,7 @@ EntityBase
     {
         id:frogAnimation
         defaultSource: "../assets/spritesheet.png"
-        scale: 0.5
+        scale: 3.5
         SpriteVPlay
         {
             name: "sitting"

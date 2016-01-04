@@ -41,3 +41,7 @@ win32 {
 macx {
     ICON = macx/app_icon.icns
 }
+
+DISTFILES += \
+    qml/OldLeft.qml \
+    qml/object/OldLeaf.qml
