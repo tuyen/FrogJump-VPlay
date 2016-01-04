@@ -8,7 +8,7 @@ EntityBase
     SpriteSequenceVPlay
     {
         id:frogAnimation
-        defaultSource: "../assets/spritesheet.png"
+        defaultSource: "../../assets/spritesheet.png"
         scale: 3.5
         SpriteVPlay
         {
