@@ -34,7 +34,12 @@ EntityBase
         frameWidth: 128
         frameX: 0
         frameY: 128
-       }       
+       }
+       rotation: frogEntity.state == "jumping" ?
+                   (system.desktopPlatform ?
+                       twoAxisController.xAxis * 15
+                       : (accelerometer.reading !== null ? -accelerometer.reading.x * 10 : 0))
+                   : 0
     }
     onStateChanged:
     {        
@@ -67,6 +72,7 @@ EntityBase
              if(otherEntityType === "leaf"&&frogEntity.state == "falling")
              {
                 frogCollider.linearVelocity.y = -400
+                otherEntity.playWobbleAnimation()
              }
       }
     }    

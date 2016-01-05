@@ -41,4 +41,18 @@ EntityBase {
     velocity:  frog.impulse / 2 // impulse is y velocity of the frog
     running: frog.y < 210 // move only when the frog is jumping high enough
   }
+  ScaleAnimator {
+     id: wobbleAnimation
+     target: leaf
+     running: false // default is false and it gets activated on every collision
+     from: 0.8
+     to: 1
+     duration: 1000
+     easing.type: Easing.OutElastic // Easing used get an elastic wobbling instead of a linear scale change
+   }
+
+   // function to start wobble animation
+   function playWobbleAnimation() {
+     wobbleAnimation.start()
+   }
 }
