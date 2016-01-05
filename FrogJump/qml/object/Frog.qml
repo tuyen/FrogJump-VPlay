@@ -66,13 +66,18 @@ EntityBase
       {
         var otherEntity = other.getBody().target
         var otherEntityType = otherEntity.entityType
+          if(otherEntityType==="Fly")
+          {
+            score+=1
+              otherEntity.setNewPossition()
+          }
          if(otherEntityType === "Border"){
              frogEntity.die()
          }else
-             if(otherEntityType === "leaf"&&frogEntity.state == "falling")
+             if(otherEntityType === "leaf"&&frogEntity.state == "falling"&&gameScene.state=="playing")
              {
                 frogCollider.linearVelocity.y = -400
-                otherEntity.playWobbleAnimation()
+                otherEntity.playWobbleAnimation()                 
              }
       }
     }    
@@ -82,13 +87,14 @@ EntityBase
         frogEntity.y= 220
         frogCollider.linearVelocity.y = 0
         frogAnimation.jumpTo("sitting")
-        score=0
+        lastscore = score
+        score=0        
         gameScene.state="gameOver"
     }
     onYChanged: {
       if(y < 200) {
         y = 200 // limit the frog's y value
-         score+=1
+
       }
     }
 }
