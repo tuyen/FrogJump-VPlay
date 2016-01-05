@@ -54,14 +54,14 @@ EntityBase
       width: 25 // width of the frog collider
       height: 1 // height of the frog collider
       bodyType: Body.Dynamic
-
+      linearVelocity.x: system.desktopPlatform ?
+                  twoAxisController.xAxis * 200 :  //  for desktop
+                  (accelerometer.reading !== null ? -accelerometer.reading.x * 100 : 0)
       // handle collision
       fixture.onContactChanged:
       {
         frogCollider.linearVelocity.y = -400
-          frogCollider.linearVelocity.x= system.desktopPlatform ?
-                      twoAxisController.xAxis * 200 :  //  for desktop
-                      (accelerometer.reading !== null ? -accelerometer.reading.x * 100 : 0)
+
       }
     }    
 }

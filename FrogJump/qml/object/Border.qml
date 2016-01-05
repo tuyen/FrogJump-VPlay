@@ -7,7 +7,7 @@ EntityBase
     entityType: "Border"
     BoxCollider
     {
-        width: GameScene.width*5
+        width: gameScene.width*5
         height: 50
         bodyType: Body.Static
         collisionTestingOnlyMode: true
