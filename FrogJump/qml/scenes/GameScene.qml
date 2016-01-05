@@ -38,7 +38,13 @@ Scene{
         y: gameScene.height/2
 
     }
-
+    Repeater{
+     model: 10
+     Leaf{
+       x: utils.generateRandomValueBetween(0, gameScene.width) // random value
+       y: gameScene.height / 10 * index // distribute the platforms across the screen
+     }
+   }
     Border {
       id: border
       x: -gameScene.width * 2

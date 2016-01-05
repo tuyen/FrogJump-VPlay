@@ -37,7 +37,7 @@ EntityBase
        }       
     }
     onStateChanged:
-    {
+    {        
          if(frogEntity.state=="jumping")
          {
              frogAnimation.jumpTo("jumping")//change the current animation to jumping
@@ -60,8 +60,22 @@ EntityBase
       // handle collision
       fixture.onContactChanged:
       {
-        frogCollider.linearVelocity.y = -400
-
+        var otherEntity = other.getBody().target
+        var otherEntityType = otherEntity.entityType
+         if(otherEntityType === "Border"){
+             frogEntity.die()
+         }else
+             if(otherEntityType === "leaf"&&frogEntity.state == "falling")
+             {
+                frogCollider.linearVelocity.y = -400
+             }
       }
     }    
+    function die()
+    {
+        frogEntity.x = gameScene.width/2
+        frogEntity.y= 220
+        frogCollider.linearVelocity.y = 0
+        frogAnimation.jumpTo("sitting")
+    }
 }

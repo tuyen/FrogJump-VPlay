@@ -23,4 +23,11 @@ EntityBase {
     bodyType: Body.Dynamic // only Dynamic bodies can collide with each other
     collisionTestingOnlyMode: true // collisions are detected, but no physics are applied to the colliding bodies
   }
+  MovementAnimation {
+    id: movement
+    target: leaf
+    property: "y"
+    velocity:  frog.impulse / 2 // impulse is y velocity of the frog
+    running: frog.y < 210 // move only when the frog is jumping high enough
+  }
 }
