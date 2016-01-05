@@ -26,8 +26,8 @@ EntityBase
     BoxCollider
     {
       id: flygCollider
-      width: 10 // width of the frog collider
-      height: 10 // height of the frog collider
+      width: 5 // width of the frog collider
+      height: 5 // height of the frog collider
       bodyType: Body.Dynamic // only Dynamic bodies can collide with each other
       collisionTestingOnlyMode: true // collisions are detected, but no physics are applied to the colliding bodies
       fixture.onBeginContact:

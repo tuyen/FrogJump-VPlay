@@ -66,10 +66,10 @@ EntityBase
       {
         var otherEntity = other.getBody().target
         var otherEntityType = otherEntity.entityType
-          if(otherEntityType==="Fly")
+          if(otherEntityType==="Fly"||otherEntityType==="Fish")
           {
             score+=1
-              otherEntity.setNewPossition()
+            otherEntity.setNewPossition()
           }
          if(otherEntityType === "Border"){
              frogEntity.die()

@@ -11,7 +11,7 @@ EntityBase
         id: fishImg
         defaultSource: "../../assets/fish.png"
         scale: 0.3
-        anchors.centerIn: flygCollider
+        anchors.centerIn: fishgCollider
         state:"goleft"
         SpriteVPlay
         {
@@ -37,8 +37,8 @@ EntityBase
     BoxCollider
     {
         id: fíhgCollider
-        width: 10 // width of the frog collider
-        height: 10 // height of the frog collider
+        width: 15 // width of the frog collider
+        height: 15 // height of the frog collider
         bodyType: Body.Dynamic // only Dynamic bodies can collide with each other
         collisionTestingOnlyMode: true // collisions are detected, but no physics are applied to the colliding bodies
         fixture.onBeginContact:
