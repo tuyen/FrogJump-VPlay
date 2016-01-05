@@ -49,11 +49,10 @@ EntityBase
     }
     BoxCollider
     {
-      id: frogCollider
-
+      id: frogCollider      
       width: 25 // width of the frog collider
       height: 1 // height of the frog collider
-      bodyType: Body.Dynamic
+      bodyType: gameScene.state == "playing" ? Body.Dynamic : Body.Static
       linearVelocity.x: system.desktopPlatform ?
                   twoAxisController.xAxis * 200 :  //  for desktop
                   (accelerometer.reading !== null ? -accelerometer.reading.x * 100 : 0)
@@ -77,5 +76,13 @@ EntityBase
         frogEntity.y= 220
         frogCollider.linearVelocity.y = 0
         frogAnimation.jumpTo("sitting")
+        score=0
+        gameScene.state="gameOver"
+    }
+    onYChanged: {
+      if(y < 200) {
+        y = 200 // limit the frog's y value
+         score+=1
+      }
     }
 }

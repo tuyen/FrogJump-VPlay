@@ -22,6 +22,17 @@ EntityBase {
     height: parent.height - 20 // actual height is slightly smaller so the collision works smoother
     bodyType: Body.Dynamic // only Dynamic bodies can collide with each other
     collisionTestingOnlyMode: true // collisions are detected, but no physics are applied to the colliding bodies
+    fixture.onBeginContact:
+    {
+      var otherEntity = other.getBody().target
+      var otherEntityType = otherEntity.entityType
+
+      if(otherEntityType === "Border")
+      {
+        leaf.x = utils.generateRandomValueBetween(32, gameScene.width - 64) // generate random x
+        leaf.y = 0 // the top of the screen
+      }
+    }
   }
   MovementAnimation {
     id: movement
