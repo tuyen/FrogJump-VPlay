@@ -48,11 +48,23 @@ Scene{
       x: gameScene.width / 2 // place the frog in the horizontal center
       y: 220
     }
+    Leaf{
+      id: leaf
+      x: gameScene.width / 2 // place the frog in the horizontal center
+      y: 240
+    }
     Repeater{
-     model: 10
+     model: 9
      Leaf{
        x: utils.generateRandomValueBetween(0, gameScene.width) // random value
-       y: gameScene.height / 10 * index // distribute the platforms across the screen
+       y: gameScene.height / 9 * index // distribute the platforms across the screen
+     }
+   }
+    Repeater{
+     model: 5
+     Fish{
+       x: utils.generateRandomValueBetween(0, gameScene.width) // random value
+       y: gameScene.height / 9 * index // distribute the platforms across the screen
      }
    }
     Repeater

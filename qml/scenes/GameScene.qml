@@ -11,7 +11,7 @@ Scene{
     state:"start"
     PhysicsWorld
     {
-        debugDrawVisible: true // set this to true to show the physics overlay
+        debugDrawVisible: false // set this to true to show the physics overlay
         updatesPerSecondForPhysics: 60
         gravity.y: 20 // how much gravity do you want?
     }
@@ -67,6 +67,13 @@ Scene{
     Repeater{
         model: 10
         Leaf{
+            x: utils.generateRandomValueBetween(0, gameScene.width) // random value
+            y: gameScene.height / 10 * index // distribute the platforms across the screen
+        }
+    }
+    Repeater{
+        model: 10
+        Fish{
             x: utils.generateRandomValueBetween(0, gameScene.width) // random value
             y: gameScene.height / 10 * index // distribute the platforms across the screen
         }
