@@ -56,12 +56,14 @@ EntityBase {
             if(otherEntityType === "Frog"){
                 oldLeafEntity.state = "broken"
                 oldLeafCollider.linearVelocity.y = 10
-                //oldLeafCollider.collisionTestingOnlyMode= false
+                oldLeafCollider.collisionTestingOnlyMode= false
             }
             if(otherEntityType === "Border")
             {
               oldLeafEntity.x = utils.generateRandomValueBetween(32, gameScene.width - 64) // generate random x
               oldLeafEntity.y = 0 // the top of the screen
+              oldLeafEntity.state="default"
+                oldLeafCollider.collisionTestingOnlyMode= true
             }
         }
     }

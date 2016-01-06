@@ -43,6 +43,7 @@ EntityBase
         collisionTestingOnlyMode: true // collisions are detected, but no physics are applied to the colliding bodies
         fixture.onBeginContact:
         {
+
           var otherEntity = other.getBody().target
           var otherEntityType = otherEntity.entityType
 

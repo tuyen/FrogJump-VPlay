@@ -30,7 +30,7 @@ EntityBase {
       if(otherEntityType === "Border")
       {
         leaf.x = utils.generateRandomValueBetween(32, gameScene.width - 64) // generate random x
-        leaf.y = 0 // the top of the screen
+        leaf.y -= gameScene.height // the top of the screen
       }
     }
   }

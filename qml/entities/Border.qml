@@ -4,11 +4,14 @@ import "../scenes"
 
 EntityBase
 {
+    id:border
     entityType: "Border"
+    width: gameScene.width*5
+    height: 10
     BoxCollider
     {
-        width: gameScene.width*5
-        height: 50
+        width: border.width
+        height: border.height
         bodyType: Body.Static
         collisionTestingOnlyMode: true
         Rectangle{

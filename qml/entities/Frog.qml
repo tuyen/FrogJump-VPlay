@@ -64,25 +64,34 @@ EntityBase
       // handle collision
       fixture.onContactChanged:
       {
+          var idother = other.getI
         var otherEntity = other.getBody().target
         var otherEntityType = otherEntity.entityType
           if(otherEntityType==="Fly"||otherEntityType==="Fish")
           {
+              soundCoin.play()
             score+=1
             otherEntity.setNewPossition()
           }
-         if(otherEntityType === "Border"){
+         if(otherEntityType === "Border")
+         {
              frogEntity.die()
-         }else
+         }
+         if(otherEntityType === "Bird")
+         {
+             frogEntity.die()
+             otherEntity.y=0;
+         }
              if(otherEntityType === "leaf"&&frogEntity.state == "falling"&&gameScene.state=="playing")
              {
                 frogCollider.linearVelocity.y = -400
                 otherEntity.playWobbleAnimation()
-             }
+             }            
       }
     }
     function die()
-    {
+    {        
+        soundFrog.play()
         frogEntity.x = gameScene.width/2
         frogEntity.y= 220
         frogCollider.linearVelocity.y = 0
