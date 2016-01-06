@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.5
 import VPlay 2.0
 import QtSensors 5.3
 import "../entities"
@@ -34,6 +34,8 @@ BaseScene{
         gravity.y: 20 // how much gravity do you want?
     }
     Keys.forwardTo: frog.controller
+
+
 
     MouseArea {
         id: mouseArea
@@ -149,28 +151,36 @@ BaseScene{
         source: gameScene.state == "gameOver" ? "../../assets/gameOverText.png" : "../../assets/clickToPlayText.png"
         visible: gameScene.state !== "playing"
     }
-    Image {
-        id: infobtScore
-        x:50
-        y:20
-        height: 140
-        source: "../../assets/scoreButton.png"
-        visible: gameScene.state === "gameOver"
-    }
-    Image {
-        id: infolbScore
-        x:100
-        y:120
-        height: 60
-        source: "../../assets/scoreCounter.png"
-        visible: gameScene.state === "gameOver"
-        // text component to show the score
-        Text {
-            id: infotscore
+    // score button to open leaderboard
+    Rectangle {
+        width: 150
+        height: 50
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: infoText.bottom
+        anchors.margins: -50
+        color: "orange"
+        id: btnCredits
+        visible: gameScene.state == "gameOver"
+        Image {
+            id: scoreSceneButton
+            source: "../../assets/scoreButton.png"
             anchors.centerIn: parent
-            color: "white"
-            font.pixelSize: 32
-            text: lastscore
+        }
+        ScaleAnimator {
+            id: creScale
+            target: btnCredits
+            running: true
+            from: 0.8
+            to: 1
+            duration: 1000
+            easing.type: Easing.OutElastic // Easing used get an elastic wobbling instead of a linear scale change
+        }
+        MouseArea {
+            id: scoreSceneMouseArea
+            anchors.fill: parent
+            onClicked: gameWindow.state = "credits"
+            hoverEnabled: true
+            onPressed: creScale.start()
         }
     }
 

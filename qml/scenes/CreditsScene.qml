@@ -5,9 +5,5 @@ BaseScene{
     id: creditsScene
 
 
-    // background
-    Rectangle {
-      anchors.fill: parent.gameWindowAnchorItem
-      color: "#49a349"
-    }
+
 }

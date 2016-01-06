@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import VPlay 2.0
-
+import "../scenes"
 EntityBase
 {
     id:frogEntity //the id we use as a  reference inside this class
@@ -25,32 +25,32 @@ EntityBase
             frameHeight: 128
             startFrameColumn: 2
         }
-       SpriteVPlay
-       {
-        name:"jumping"
-        frameCount: 4
-        frameRate: 8
-        frameHeight: 256
-        frameWidth: 128
-        frameX: 0
-        frameY: 128
-       }
-       rotation: frogEntity.state == "jumping" ?
-                   (system.desktopPlatform ?
-                       twoAxisController.xAxis * 15
-                       : (accelerometer.reading !== null ? -accelerometer.reading.x * 10 : 0))
-                   : 0
+        SpriteVPlay
+        {
+            name:"jumping"
+            frameCount: 4
+            frameRate: 8
+            frameHeight: 256
+            frameWidth: 128
+            frameX: 0
+            frameY: 128
+        }
+        rotation: frogEntity.state == "jumping" ?
+                      (system.desktopPlatform ?
+                           twoAxisController.xAxis * 15
+                         : (accelerometer.reading !== null ? -accelerometer.reading.x * 10 : 0))
+                    : 0
     }
     onStateChanged:
     {
-         if(frogEntity.state=="jumping")
-         {
-             frogAnimation.jumpTo("jumping")//change the current animation to jumping
-         }
-         if(frogEntity.state=="falling")
-         {
-             frogAnimation.jumpTo("sitting")
-         }
+        if(frogEntity.state=="jumping")
+        {
+            frogAnimation.jumpTo("jumping")//change the current animation to jumping
+        }
+        if(frogEntity.state=="falling")
+        {
+            frogAnimation.jumpTo("sitting")
+        }
     }
     BoxCollider
     {
@@ -96,14 +96,15 @@ EntityBase
         frogEntity.y= 220
         frogCollider.linearVelocity.y = 0
         frogAnimation.jumpTo("sitting")
-        lastscore = score
+        gameNetwork.reportScore(score)
         score=0
         gameScene.state="gameOver"
+
     }
     onYChanged: {
-      if(y < 200) {
-        y = 200 // limit the frog's y value
+        if(y < 200) {
+            y = 200 // limit the frog's y value
 
-      }
+        }
     }
 }

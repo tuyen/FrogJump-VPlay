@@ -14,17 +14,30 @@ GameWindow {
         id: entityManager
         entityContainer: gameScene
     }
-
+    VPlayGameNetwork {
+        id: gameNetwork
+        gameId: 212
+        secret: "FrogJumping"
+        gameNetworkView: frogNetworkView
+    }
     MenuScene{
         id: menuScene
         onCreditsPressed: gameWindow.state = "credits"
         onGameScenePressed: gameWindow.state = "game"
-        onBackButtonPressed: Application.destroy()
+        onBackButtonPressed: gameWindow.close()
     }
 
     CreditsScene{
         id: creditsScene
         onBackButtonPressed: gameWindow.state = "menu"
+        VPlayGameNetworkView {
+            id: frogNetworkView
+            visible: true
+            anchors.fill: parent.gameWindowAnchorItem
+            onBackClicked: {
+                gameWindow.state = "menu"
+            }
+        }
     }
 
     GameScene{
