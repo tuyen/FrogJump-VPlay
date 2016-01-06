@@ -41,3 +41,7 @@ win32 {
 macx {
     ICON = macx/app_icon.icns
 }
+
+DISTFILES += \
+    qml/scenes/CreditsScene.qml \
+    qml/scenes/MenuScene.qml

@@ -2,8 +2,7 @@ import QtQuick 2.0
 import VPlay 2.0
 import QtSensors 5.3
 import "../entities"
-
-Scene{
+BaseScene{
     id : gameScene
     width: 320
     height: 480
@@ -17,6 +16,20 @@ Scene{
         gravity.y: 20 // how much gravity do you want?
     }
     Keys.forwardTo: frog.controller
+
+    MouseArea {
+        id: mouseArea
+        anchors.fill: gameScene.gameWindowAnchorItem
+        onClicked: {
+            if(gameScene.state === "start") { // if the game is ready and you click the screen we start the game
+                gameScene.state = "playing"
+            }
+            if(gameScene.state === "gameOver") // if the frog is dead and you click the screen we restart the game
+            {
+                gameScene.state = "start"
+            }
+        }
+    }
 
     Accelerometer {
         id: accelerometer
@@ -100,20 +113,7 @@ Scene{
     Border {
         id: border
         x: -gameScene.width * 2
-        y: gameScene.height - 50 // subtract a small value to make the border just visible in your scene
-    }
-    MouseArea {
-        id: mouseArea
-        anchors.fill: gameScene.gameWindowAnchorItem
-        onClicked: {
-            if(gameScene.state === "start") { // if the game is ready and you click the screen we start the game
-                gameScene.state = "playing"
-            }
-            if(gameScene.state === "gameOver") // if the frog is dead and you click the screen we restart the game
-            {
-                gameScene.state = "start"
-            }
-        }
+        y: gameScene.height-10 // subtract a small value to make the border just visible in your scene
     }
 
     Image {
