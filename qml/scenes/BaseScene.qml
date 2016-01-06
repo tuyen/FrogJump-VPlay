@@ -4,5 +4,5 @@ Scene{
     id: baseScene
     opacity: 0
     visible: opacity > 0
-    enabled: visible
+    enabled: visible    
 }

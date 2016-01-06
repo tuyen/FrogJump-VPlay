@@ -9,6 +9,24 @@ BaseScene{
     property int score: 0
     property int lastscore: 0
     state:"start"
+    SoundEffectVPlay {
+        id: sounBackground
+        source: "../../assets/snow-lullaby.wav"
+        loops: 100
+        autoPlay: true
+      }
+    SoundEffectVPlay {
+        id: soundFrog
+        source: "../../assets/frog.wav"
+        //loops:
+        //autoPlay: true
+
+      }
+    SoundEffectVPlay {
+        id: soundCoin
+        source: "../../assets/coin.wav"
+
+      }
     PhysicsWorld
     {
         debugDrawVisible: false // set this to true to show the physics overlay
@@ -21,12 +39,14 @@ BaseScene{
         id: mouseArea
         anchors.fill: gameScene.gameWindowAnchorItem
         onClicked: {
+
             if(gameScene.state === "start") { // if the game is ready and you click the screen we start the game
-                gameScene.state = "playing"
+                gameScene.state = "playing"             
             }
             if(gameScene.state === "gameOver") // if the frog is dead and you click the screen we restart the game
             {
                 gameScene.state = "start"
+
             }
         }
     }
@@ -110,7 +130,14 @@ BaseScene{
             y:gameScene.height/3*index
         }
     }
-    Border {
+    Bird{
+        id: bird1
+        x: gameScene.width/2 - 100
+        y: gameScene.height/2 + 50
+    }
+
+    Border
+    {
         id: border
         x: -gameScene.width * 2
         y: gameScene.height-10 // subtract a small value to make the border just visible in your scene
