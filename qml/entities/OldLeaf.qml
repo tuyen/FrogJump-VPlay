@@ -39,6 +39,10 @@ EntityBase {
         {
             oldLeafAnimation.jumpTo("broken")//change the current animation to jumping
         }
+        if(oldLeafEntity.state=="default")
+        {
+            oldLeafAnimation.jumpTo("default")//change the current animation to jumping
+        }
     }
 
     // BoxCollider responsible for collision detection
