@@ -34,7 +34,8 @@ EntityBase {
       }
     }
   }
-  MovementAnimation {
+  MovementAnimation
+  {
     id: movement
     target: leaf
     property: "y"

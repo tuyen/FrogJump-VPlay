@@ -2,6 +2,7 @@ import QtQuick 2.0
 import VPlay 2.0
 import QtSensors 5.3
 import "../entities"
+
 Scene{
     id : gameScene
     width: 320

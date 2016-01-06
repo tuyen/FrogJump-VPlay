@@ -36,7 +36,7 @@ EntityBase
     }
     BoxCollider
     {
-        id: fíhgCollider
+        id: fishgCollider
         width: 15 // width of the frog collider
         height: 15 // height of the frog collider
         bodyType: Body.Dynamic // only Dynamic bodies can collide with each other
