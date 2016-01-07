@@ -12,30 +12,34 @@ BaseScene{
     }
     Image {
         id: scoreCounter
-        source: "../../assets/scoreCounter.png"
-        height: 150
-        width: 150
-        x: -15
-        y: -15
+        source: "../../assets/panel.png"
+        height: 200
+        width: 300
+        anchors.horizontalCenter: parent.horizontalCenter
+        y: 100
         // text component to show the score
         Text {
             id: scoreText
             anchors.centerIn: parent
             color: "white"
-            font.pixelSize: 32
-            text: "your score"
+            font.pixelSize: 20
+            text: "your score: " + gameScene.lastscore + gameNetwork.userHighscoreForLeaderboard()
         }
     }
     Column {
-        anchors.centerIn: parent
+        anchors.horizontalCenter: parent.horizontalCenter
+        y: 300
         spacing: 20
 
         // play button to start game
         Rectangle {
             width: 100
+            height: 25
             id: btnPlay
+
             Image {
                 id: gameSceneButton
+                scale: 1.5
                 source: "../../assets/playButton.png"
                 anchors.centerIn: parent
             }
@@ -60,8 +64,12 @@ BaseScene{
         // score button to open leaderboard
         Rectangle {
             id: btnCredits
+            width: 100
+            height: 25
+
             Image {
                 id: scoreSceneButton
+                scale: 1.5
                 source: "../../assets/scoreButton.png"
                 anchors.centerIn: parent
             }

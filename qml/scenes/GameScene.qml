@@ -43,12 +43,7 @@ BaseScene{
         onClicked: {
 
             if(gameScene.state === "start") { // if the game is ready and you click the screen we start the game
-                gameScene.state = "playing"             
-            }
-            if(gameScene.state === "gameOver") // if the frog is dead and you click the screen we restart the game
-            {
-                gameScene.state = "start"
-
+                gameScene.state = "playing"
             }
         }
     }
@@ -148,40 +143,9 @@ BaseScene{
     Image {
         id: infoText
         anchors.centerIn: parent
-        source: gameScene.state == "gameOver" ? "../../assets/gameOverText.png" : "../../assets/clickToPlayText.png"
+        source: "../../assets/clickToPlayText.png"
         visible: gameScene.state !== "playing"
     }
-    // score button to open leaderboard
-    Rectangle {
-        width: 150
-        height: 50
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: infoText.bottom
-        anchors.margins: -50
-        color: "orange"
-        id: btnCredits
-        visible: gameScene.state == "gameOver"
-        Image {
-            id: scoreSceneButton
-            source: "../../assets/scoreButton.png"
-            anchors.centerIn: parent
-        }
-        ScaleAnimator {
-            id: creScale
-            target: btnCredits
-            running: true
-            from: 0.8
-            to: 1
-            duration: 1000
-            easing.type: Easing.OutElastic // Easing used get an elastic wobbling instead of a linear scale change
-        }
-        MouseArea {
-            id: scoreSceneMouseArea
-            anchors.fill: parent
-            onClicked: gameWindow.state = "credits"
-            hoverEnabled: true
-            onPressed: creScale.start()
-        }
-    }
+
 
 }

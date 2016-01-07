@@ -42,6 +42,8 @@ GameWindow {
 
     GameOverScene{
         id: gameOverScene
+        onCreditsPressed: gameWindow.state = "credits"
+        onGameScenePressed: gameWindow.state = "game"
         onBackButtonPressed: gameWindow.state = "menu"
     }
 
