@@ -52,6 +52,11 @@ EntityBase
             fish.x = utils.generateRandomValueBetween(32, gameScene.width - 64) // generate random x
             fish.y = 0 // the top of the screen
           }
+          if(otherEntityType === "Shark")
+          {
+            fish.x = utils.generateRandomValueBetween(32, gameScene.width - 64) // generate random x
+            fish.y = 0 // the top of the screen
+          }
         }
     }
     MovementAnimation {
@@ -65,5 +70,18 @@ EntityBase
     {
         fish.x = utils.generateRandomValueBetween(0,gameScene.width)
         fish.y -= gameScene.height
+    }
+    MovementAnimation
+    {
+        id:fishmovex
+        target:fish
+        property: "x"
+        velocity: -20
+        running: true
+    }
+    onXChanged:
+    {
+        if(x<-3)
+            x=gameScene.width+10
     }
 }

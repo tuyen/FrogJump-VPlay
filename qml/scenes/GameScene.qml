@@ -13,7 +13,7 @@ BaseScene{
         id: sounBackground
         source: "../../assets/snow-lullaby.wav"
         loops: 100
-        autoPlay: true
+        //autoPlay: true
       }
     SoundEffectVPlay {
         id: soundFrog
@@ -44,6 +44,12 @@ BaseScene{
 
             if(gameScene.state === "start") { // if the game is ready and you click the screen we start the game
                 gameScene.state = "playing"
+                sounBackground.play()
+            }
+            if(gameScene.state === "gameOver") // if the frog is dead and you click the screen we restart the game
+            {
+                gameScene.state = "start"
+                sounBackground.play()
             }
         }
     }
@@ -81,9 +87,22 @@ BaseScene{
 
     }
 
+    Shark
+    {
+        id: shark1
+        x:20
+        y:20
+    }
+    Repeater{
+        model: 10
+        Fish{
+            x: utils.generateRandomValueBetween(0, gameScene.width) // random value
+            y: gameScene.height / 10 * index // distribute the platforms across the screen
+        }
+    }
     Leaf
     {
-        id: leaf1
+        id: leafbase
         x: gameScene.width/2
         y: gameScene.height/2
 
@@ -102,13 +121,7 @@ BaseScene{
             y: gameScene.height / 10 * index // distribute the platforms across the screen
         }
     }
-    Repeater{
-        model: 10
-        Fish{
-            x: utils.generateRandomValueBetween(0, gameScene.width) // random value
-            y: gameScene.height / 10 * index // distribute the platforms across the screen
-        }
-    }
+
     Repeater
     {
         model: 3
@@ -137,15 +150,46 @@ BaseScene{
     {
         id: border
         x: -gameScene.width * 2
-        y: gameScene.height-10 // subtract a small value to make the border just visible in your scene
+        y: gameScene.height // subtract a small value to make the border just visible in your scene
     }
 
     Image {
         id: infoText
         anchors.centerIn: parent
-        source: "../../assets/clickToPlayText.png"
+        source: gameScene.state == "gameOver" ? "../../assets/gameOverText.png" : "../../assets/clickToPlayText.png"
         visible: gameScene.state !== "playing"
     }
-
+    // score button to open leaderboard
+    Rectangle {
+        width: 150
+        height: 50
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: infoText.bottom
+        anchors.margins: -50
+        color: "orange"
+        id: btnCredits
+        visible: gameScene.state == "gameOver"
+        Image {
+            id: scoreSceneButton
+            source: "../../assets/scoreButton.png"
+            anchors.centerIn: parent
+        }
+        ScaleAnimator {
+            id: creScale
+            target: btnCredits
+            running: true
+            from: 0.8
+            to: 1
+            duration: 1000
+            easing.type: Easing.OutElastic // Easing used get an elastic wobbling instead of a linear scale change
+        }
+        MouseArea {
+            id: scoreSceneMouseArea
+            anchors.fill: parent
+            onClicked: gameWindow.state = "credits"
+            hoverEnabled: true
+            onPressed: creScale.start()
+        }
+    }
 
 }

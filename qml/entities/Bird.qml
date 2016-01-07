@@ -25,8 +25,8 @@ EntityBase
     BoxCollider
     {
         id: birdCollider
-        width: 15 // width of the frog collider
-        height: 5 // height of the frog collider
+        width: 40 // width of the frog collider
+        height: 30 // height of the frog collider
         bodyType: Body.Dynamic // only Dynamic bodies can collide with each other
         collisionTestingOnlyMode: true // collisions are detected, but no physics are applied to the colliding bodies
         fixture.onBeginContact:
@@ -34,7 +34,7 @@ EntityBase
           var otherEntity = other.getBody().target
           var otherEntityType = otherEntity.entityType
 
-          if(otherEntityType === "Border")
+          if(otherEntityType === "Border"||otherEntityType === "Shark")
           {
             bird.x = utils.generateRandomValueBetween(32, gameScene.width - 64) // generate random x
             bird.y = -gameScene.height*1.5 // the top of the screen

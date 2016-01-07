@@ -57,7 +57,7 @@ EntityBase {
         {
             var otherEntity = other.getBody().target
             var otherEntityType = otherEntity.entityType
-            if(otherEntityType === "Frog"){
+            if(otherEntityType === "Frog"&&frog.state=="falling"){
                 oldLeafEntity.state = "broken"
                 oldLeafCollider.linearVelocity.y = 10
                 oldLeafCollider.collisionTestingOnlyMode= false
