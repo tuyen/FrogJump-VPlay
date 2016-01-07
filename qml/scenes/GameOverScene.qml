@@ -34,17 +34,17 @@ BaseScene{
     Column {
         anchors.horizontalCenter: parent.horizontalCenter
         y: 350
-        spacing: 20
+        spacing: 50
 
         // play button to start game
         Rectangle {
-            width: 100
-            height: 25
+            width: 75
+            height: 15
             id: btnPlay
 
             Image {
                 id: gameSceneButton
-                scale: 1.5
+
                 source: "../../assets/playButton.png"
                 anchors.centerIn: parent
             }
@@ -69,12 +69,12 @@ BaseScene{
         // score button to open leaderboard
         Rectangle {
             id: btnCredits
-            width: 100
-            height: 25
+            width: 75
+            height: 15
 
             Image {
                 id: scoreSceneButton
-                scale: 1.5
+
                 source: "../../assets/scoreButton.png"
                 anchors.centerIn: parent
             }

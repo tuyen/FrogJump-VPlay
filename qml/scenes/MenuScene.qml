@@ -5,6 +5,7 @@ BaseScene{
     id : menuScene
     signal gameScenePressed
     signal creditsPressed
+    signal aboutPressed
     state : "sound_on"
     PhysicsWorld
     {
@@ -38,7 +39,7 @@ BaseScene{
     // play button to start game
     Rectangle {
         width: 75
-        height: 25
+        height: 15
         x: parent.x + parent.width - 100
         y: 300
         id: btnPlay
@@ -68,22 +69,20 @@ BaseScene{
 
 
     // score button to open leaderboard
-
-
     Rectangle {
         width: 75
-        height: 25
+        height: 15
         x: parent.x + parent.width - 100
         y: 350
-        id: btnSound
+        id: btnScore
         Image {
-            id: sound
+            id: score
             source: "../../assets/scoreButton.png"
             anchors.centerIn: parent
         }
         ScaleAnimator {
-            id: soundAnimate
-            target: btnPlay
+            id: scoreAnimate
+            target: btnScore
             running: true
             from: 0.8
             to: 1
@@ -91,28 +90,59 @@ BaseScene{
             easing.type: Easing.OutElastic // Easing used get an elastic wobbling instead of a linear scale change
         }
         MouseArea {
-            id: soundArea
+            id: scoreArea
             anchors.fill: parent
-            onClicked: gameScenePressed()
+            onClicked: creditsPressed()
             hoverEnabled: true
-            onPressed: gameScale.start()
+            onPressed: scoreAnimate.start()
         }
     }
 
+    //button about
+    Rectangle {
+        width: 75
+        height: 15
+        x: parent.x + parent.width - 100
+        y: 400
+        id: btnAbout
+        Image {
+            id: aboutSceneButton
+            source: "../../assets/about.png"
+            anchors.centerIn: parent
+        }
+        ScaleAnimator {
+            id: aboutScale
+            target: btnAbout
+            running: true
+            from: 0.8
+            to: 1
+            duration: 1000
+            easing.type: Easing.OutElastic // Easing used get an elastic wobbling instead of a linear scale change
+        }
+        MouseArea {
+            id: aboutSceneMouseArea
+            anchors.fill: parent
+            onClicked: aboutPressed()
+            hoverEnabled: true
+            onPressed: aboutScale.start()
+        }
+    }
+
+    //button turn on/off sound
     Rectangle {
         width: 25
         height: 10
         x: parent.x + parent.width - 70
-        y: 400
-        id: btnCredits
+        y: 450
+        id: btnSound
         Image {
-            id: scoreSceneButton
+            id: soundButton
             source: menuScene.state == "sound_on" ? "../../assets/loudspeaker.png" : "../../assets/loudspeaker-mute.png"
             anchors.centerIn: parent
         }
         ScaleAnimator {
-            id: creScale
-            target: btnCredits
+            id: soundScale
+            target: btnSound
             running: true
             from: 0.8
             to: 1
@@ -120,7 +150,7 @@ BaseScene{
             easing.type: Easing.OutElastic // Easing used get an elastic wobbling instead of a linear scale change
         }
         MouseArea {
-            id: scoreSceneMouseArea
+            id: soundMouseArea
             anchors.fill: parent
             onClicked: {
                 if(menuScene.state == "sound_on"){
@@ -130,7 +160,7 @@ BaseScene{
                     menuScene.state = "sound_on"
             }
             hoverEnabled: true
-            onPressed: creScale.start()
+            onPressed: soundScale.start()
         }
     }
 
