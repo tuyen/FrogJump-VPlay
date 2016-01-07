@@ -104,8 +104,10 @@ EntityBase
         frogCollider.linearVelocity.y = 0
         frogAnimation.jumpTo("sitting")
         gameNetwork.reportScore(score)
+        lastscore = score
         score=0
-        gameScene.state="gameOver"
+        gameWindow.state="gameOver"
+        gameScene.state="start"
         leafbase.x=gameScene.width/2
         leafbase.y=gameScene.height/2
     }

@@ -10,25 +10,30 @@ BaseScene{
         anchors.fill: parent.gameWindowAnchorItem
         source: "../../assets/background.png"
     }
+    Image{
+        anchors.horizontalCenter: parent.horizontalCenter
+        scale: 0.7
+        source: "../../assets/gameOverText.png"
+    }
     Image {
         id: scoreCounter
         source: "../../assets/panel.png"
         height: 200
-        width: 300
+        width: 350
         anchors.horizontalCenter: parent.horizontalCenter
-        y: 100
+        y: 150
         // text component to show the score
         Text {
             id: scoreText
             anchors.centerIn: parent
             color: "white"
             font.pixelSize: 20
-            text: "your score: " + gameScene.lastscore + gameNetwork.userHighscoreForLeaderboard()
+            text: "your score " + gameScene.lastscore + "\nyour highscore " + gameNetwork.userHighscoreForCurrentActiveLeaderboard
         }
     }
     Column {
         anchors.horizontalCenter: parent.horizontalCenter
-        y: 300
+        y: 350
         spacing: 20
 
         // play button to start game
