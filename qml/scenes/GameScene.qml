@@ -42,8 +42,14 @@ BaseScene{
         id: mouseArea
         anchors.fill: gameScene.gameWindowAnchorItem
         onClicked: {
-
-            if(gameScene.state === "start") { // if the game is ready and you click the screen we start the game
+            if(gameScene.state=="playing"&&bullet1.visible===false)
+            {
+                bullet1.visible=true
+                bullet1.x=frog.x
+                bullet1.y=frog.y
+            }
+            if(gameScene.state === "start")
+            { // if the game is ready and you click the screen we start the game
                 gameScene.state = "playing"
                 sounBackground.play()
             }
@@ -74,7 +80,12 @@ BaseScene{
             text: score
         }
     }
-
+    Bullet
+    {
+        id:bullet1
+        x: gameScene.width/2
+        y: gameScene.height/2
+    }
     Frog
     {
         id: frog
