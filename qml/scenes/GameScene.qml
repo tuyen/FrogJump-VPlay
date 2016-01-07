@@ -8,6 +8,7 @@ BaseScene{
     height: 480
     property int score: 0
     property int lastscore: 0
+    property double frogscale: 0.15
     state:"start"
     SoundEffectVPlay {
         id: sounBackground
@@ -153,5 +154,11 @@ BaseScene{
         anchors.centerIn: parent
         source: "../../assets/clickToPlayText.png"
         visible: gameScene.state !== "playing"
+    }
+    onScoreChanged:
+    {
+        frogscale=0.15+0.02*(score/20)
+        if(frogscale>0.6)
+            frogscale=0.6
     }
 }

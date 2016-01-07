@@ -2,7 +2,7 @@ import QtQuick 2.0
 import VPlay 2.0
 import "../scenes"
 EntityBase
-{
+{    
     id:frogEntity //the id we use as a  reference inside this class
     entityType: "Frog"
     state: frogCollider.linearVelocity.y < 0 ?  "jumping" : "falling" // change state according to the frog's y velocity
@@ -16,7 +16,7 @@ EntityBase
     {
         id:frogAnimation
         defaultSource: "../../assets/spritesheet.png"
-        scale: 0.15
+        scale: frogscale
         anchors.centerIn: frogCollider
         SpriteVPlay
         {
@@ -69,8 +69,8 @@ EntityBase
           if(otherEntityType==="Fly")
           {
               soundCoin.play()
-            score+=3
-            otherEntity.setNewPossition()
+              score+=3
+              otherEntity.setNewPossition()
           }
           if(otherEntityType==="Fish")
           {
@@ -119,4 +119,5 @@ EntityBase
         if(y > gameScene.height+10)
             die();
     }    
+
 }
