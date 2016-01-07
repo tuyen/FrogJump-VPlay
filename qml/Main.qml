@@ -24,6 +24,7 @@ GameWindow {
         id: menuScene
         onCreditsPressed: gameWindow.state = "credits"
         onGameScenePressed: gameWindow.state = "game"
+        onAboutPressed: gameWindow.state = "about"
         onBackButtonPressed: gameWindow.close()
     }
 
@@ -45,6 +46,12 @@ GameWindow {
         onCreditsPressed: gameWindow.state = "credits"
         onGameScenePressed: gameWindow.state = "game"
         onBackButtonPressed: gameWindow.state = "menu"
+    }
+
+    AboutScene{
+        id: aboutScene
+        onBackButtonPressed: gameWindow.state = "menu"
+
     }
 
     GameScene{
@@ -84,6 +91,14 @@ GameWindow {
                 opacity : 1
             }
             PropertyChanges {target: gameWindow; activeScene: gameOverScene}
+        },
+        State {
+            name: "about"
+            PropertyChanges {
+                target: aboutScene;
+                opacity : 1
+            }
+            PropertyChanges {target: gameWindow; activeScene: aboutScene}
         }
     ]
 }

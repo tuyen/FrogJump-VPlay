@@ -12,12 +12,9 @@ EntityBase
     {
         width: border.width
         height: border.height
+        anchors.bottom: parent.bottom
         bodyType: Body.Static
         collisionTestingOnlyMode: true
-        Rectangle{
-            anchors.fill: parent
-            color:"red"
-            visible: true
-        }
+
     }
 }

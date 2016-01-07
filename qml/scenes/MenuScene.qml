@@ -38,9 +38,9 @@ BaseScene{
 
     // play button to start game
     Rectangle {
-        width: 75
-        height: 15
-        x: parent.x + parent.width - 100
+        width: 110
+        height: 35
+        x: parent.x + parent.width - 120
         y: 300
         id: btnPlay
         Image {
@@ -70,9 +70,9 @@ BaseScene{
 
     // score button to open leaderboard
     Rectangle {
-        width: 75
-        height: 15
-        x: parent.x + parent.width - 100
+        width: 110
+        height: 35
+        x: parent.x + parent.width - 120
         y: 350
         id: btnScore
         Image {
@@ -100,9 +100,9 @@ BaseScene{
 
     //button about
     Rectangle {
-        width: 75
-        height: 15
-        x: parent.x + parent.width - 100
+        width: 110
+        height: 35
+        x: parent.x + parent.width - 120
         y: 400
         id: btnAbout
         Image {
@@ -129,39 +129,39 @@ BaseScene{
     }
 
     //button turn on/off sound
-    Rectangle {
-        width: 25
-        height: 10
-        x: parent.x + parent.width - 70
-        y: 450
-        id: btnSound
-        Image {
-            id: soundButton
-            source: menuScene.state == "sound_on" ? "../../assets/loudspeaker.png" : "../../assets/loudspeaker-mute.png"
-            anchors.centerIn: parent
-        }
-        ScaleAnimator {
-            id: soundScale
-            target: btnSound
-            running: true
-            from: 0.8
-            to: 1
-            duration: 1000
-            easing.type: Easing.OutElastic // Easing used get an elastic wobbling instead of a linear scale change
-        }
-        MouseArea {
-            id: soundMouseArea
-            anchors.fill: parent
-            onClicked: {
-                if(menuScene.state == "sound_on"){
-                    menuScene.state = "sound_off"
-                    SoundEffectVPlay.muted
-                }else
-                    menuScene.state = "sound_on"
-            }
-            hoverEnabled: true
-            onPressed: soundScale.start()
-        }
-    }
+//    Rectangle {
+//        width: 25
+//        height: 10
+//        x: parent.x + parent.width - 70
+//        y: 450
+//        id: btnSound
+//        Image {
+//            id: soundButton
+//            source: menuScene.state == "sound_on" ? "../../assets/loudspeaker.png" : "../../assets/loudspeaker-mute.png"
+//            anchors.centerIn: parent
+//        }
+//        ScaleAnimator {
+//            id: soundScale
+//            target: btnSound
+//            running: true
+//            from: 0.8
+//            to: 1
+//            duration: 1000
+//            easing.type: Easing.OutElastic // Easing used get an elastic wobbling instead of a linear scale change
+//        }
+//        MouseArea {
+//            id: soundMouseArea
+//            anchors.fill: parent
+//            onClicked: {
+//                if(menuScene.state == "sound_on"){
+//                    menuScene.state = "sound_off"
+//                    SoundEffectVPlay.muted
+//                }else
+//                    menuScene.state = "sound_on"
+//            }
+//            hoverEnabled: true
+//            onPressed: soundScale.start()
+//        }
+//    }
 
 }

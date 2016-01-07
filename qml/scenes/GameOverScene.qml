@@ -18,10 +18,9 @@ BaseScene{
     Image {
         id: scoreCounter
         source: "../../assets/panel.png"
-        height: 200
-        width: 350
+
         anchors.horizontalCenter: parent.horizontalCenter
-        y: 150
+        y: 200
         // text component to show the score
         Text {
             id: scoreText
@@ -34,12 +33,12 @@ BaseScene{
     Column {
         anchors.horizontalCenter: parent.horizontalCenter
         y: 350
-        spacing: 50
+        spacing: 20
 
         // play button to start game
         Rectangle {
-            width: 75
-            height: 15
+            width: 110
+            height: 35
             id: btnPlay
 
             Image {
@@ -69,8 +68,8 @@ BaseScene{
         // score button to open leaderboard
         Rectangle {
             id: btnCredits
-            width: 75
-            height: 15
+            width: 110
+            height: 35
 
             Image {
                 id: scoreSceneButton
@@ -97,7 +96,31 @@ BaseScene{
         }
     }
 
+    Rectangle {
+        width: 110
+        height: 35
 
-
-
+        id: btnBack
+        Image {
+            id: backButton
+            source: "../../assets/backButton.png"
+            anchors.centerIn: parent
+        }
+        ScaleAnimator {
+            id: backScale
+            target: btnBack
+            running: true
+            from: 0.8
+            to: 1
+            duration: 1000
+            easing.type: Easing.OutElastic // Easing used get an elastic wobbling instead of a linear scale change
+        }
+        MouseArea {
+            id: backArea
+            anchors.fill: parent
+            onClicked: backButtonPressed()
+            hoverEnabled: true
+            onPressed: backScale.start()
+        }
+    }
 }

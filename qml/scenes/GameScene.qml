@@ -65,21 +65,7 @@ BaseScene{
         source: "../../assets/background.png"
     }
 
-    Image {
-        id: scoreCounter
-        source: "../../assets/scoreCounter.png"
-        height: 80
-        x: -15
-        y: -15
-        // text component to show the score
-        Text {
-            id: scoreText
-            anchors.centerIn: parent
-            color: "white"
-            font.pixelSize: 32
-            text: score
-        }
-    }
+
     Bullet
     {
         id:bullet1
@@ -159,7 +145,21 @@ BaseScene{
         x: -gameScene.width * 2
         y: gameScene.height // subtract a small value to make the border just visible in your scene
     }
-
+    Image {
+        id: scoreCounter
+        source: "../../assets/scoreCounter.png"
+        height: 80
+        x: -15
+        y: -15
+        // text component to show the score
+        Text {
+            id: scoreText
+            anchors.centerIn: parent
+            color: "white"
+            font.pixelSize: 32
+            text: score
+        }
+    }
     Image {
         id: infoText
         anchors.centerIn: parent
