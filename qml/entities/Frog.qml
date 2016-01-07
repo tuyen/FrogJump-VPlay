@@ -89,6 +89,7 @@ EntityBase
          }
              if(otherEntityType === "leaf"&&frogEntity.state == "falling"&&gameScene.state=="playing")
              {
+                 soundWater.play()
                 frogCollider.linearVelocity.y = -400
                 otherEntity.playWobbleAnimation()
              }

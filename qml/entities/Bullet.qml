@@ -22,12 +22,21 @@ EntityBase
         var otherEntity = other.getBody().target
         var otherEntityType = otherEntity.entityType
 
-        if(otherEntityType === "Shark"||otherEntityType ==="Bird")
+        if(otherEntityType === "Shark")
         {
           bullet.visible=false
           otherEntity.y-=gameScene.height*2
           otherEntity.x = utils.generateRandomValueBetween(0,gameScene.width-50)
           score+=10
+            soundOrc.play()
+        }
+        if(otherEntityType ==="Bird")
+        {
+          bullet.visible=false
+          otherEntity.y-=gameScene.height*2
+          otherEntity.x = utils.generateRandomValueBetween(0,gameScene.width-50)
+          score+=5
+            soundOrc.play()
         }
       }
     }

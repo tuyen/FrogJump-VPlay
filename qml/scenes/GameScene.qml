@@ -16,11 +16,29 @@ BaseScene{
         loops: 100
         //autoPlay: true
     }
+
     SoundEffectVPlay {
         id: soundFrog
-        source: "../../assets/frog.wav"
-        //loops:
-        //autoPlay: true
+        source: "../../assets/frog.wav"     
+    }
+    SoundEffectVPlay {
+        id: soundWater
+        source: "../../assets/water.wav"
+
+    }
+    SoundEffectVPlay {
+        id: soundBullet
+        source: "../../assets/bullet.wav"
+
+    }
+    SoundEffectVPlay {
+        id: soundOrc
+        source: "../../assets/orc.wav"
+
+    }
+    SoundEffectVPlay {
+        id: soundcroak
+        source: "../../assets/croak.wav"
 
     }
     SoundEffectVPlay {
@@ -45,8 +63,9 @@ BaseScene{
             if(gameScene.state=="playing"&&bullet1.visible===false)
             {
                 bullet1.visible=true
-                bullet1.x=frog.x
-                bullet1.y=frog.y
+                bullet1.x=frog.x+5
+                bullet1.y=frog.y-5
+                soundBullet.play()
             }
             if(gameScene.state === "start")
             { // if the game is ready and you click the screen we start the game
@@ -110,8 +129,8 @@ BaseScene{
     Repeater{
         model: 10
         Leaf{
-            x: utils.generateRandomValueBetween(0, gameScene.width) // random value
-            y: gameScene.height / 10 * index // distribute the platforms across the screen
+            x: utils.generateRandomValueBetween(0, gameScene.width)
+            y: gameScene.height / 10 * index
         }
     }
 
@@ -168,6 +187,8 @@ BaseScene{
     }
     onScoreChanged:
     {
+        if(0.15+0.02*(score/20)>frogscale)
+            soundcroak.play()
         frogscale=0.15+0.02*(score/20)
         if(frogscale>0.6)
             frogscale=0.6
