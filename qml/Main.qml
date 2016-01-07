@@ -40,6 +40,11 @@ GameWindow {
         }
     }
 
+    GameOverScene{
+        id: gameOverScene
+        onBackButtonPressed: gameWindow.state = "menu"
+    }
+
     GameScene{
         id: gameScene
     }
@@ -69,6 +74,14 @@ GameWindow {
                 opacity : 1
             }
             PropertyChanges {target: gameWindow; activeScene: gameScene}
+        },
+        State {
+            name: "gameOver"
+            PropertyChanges {
+                target: gameOverScene;
+                opacity : 1
+            }
+            PropertyChanges {target: gameWindow; activeScene: gameOverScene}
         }
     ]
 }

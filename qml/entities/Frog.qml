@@ -54,43 +54,43 @@ EntityBase
     }
     BoxCollider
     {
-      id: frogCollider
-      width: 25 // width of the frog collider
-      height: 1 // height of the frog collider
-      bodyType: gameScene.state == "playing" ? Body.Dynamic : Body.Static
-      linearVelocity.x: system.desktopPlatform ?
-                  twoAxisController.xAxis * 200 :  //  for desktop
-                  (accelerometer.reading !== null ? -accelerometer.reading.x * 100 : 0)
-      // handle collision
-      fixture.onContactChanged:
-      {
-          var idother = other.getI
-        var otherEntity = other.getBody().target
-        var otherEntityType = otherEntity.entityType
-          if(otherEntityType==="Fly"||otherEntityType==="Fish")
-          {
-              soundCoin.play()
-            score+=1
-            otherEntity.setNewPossition()
-          }
-         if(otherEntityType === "Border")
-         {
-             frogEntity.die()
-         }
-         if(otherEntityType === "Bird")
-         {
-             frogEntity.die()
-             otherEntity.y=0;
-         }
-             if(otherEntityType === "leaf"&&frogEntity.state == "falling"&&gameScene.state=="playing")
-             {
+        id: frogCollider
+        width: 25 // width of the frog collider
+        height: 1 // height of the frog collider
+        bodyType: gameScene.state == "playing" ? Body.Dynamic : Body.Static
+        linearVelocity.x: system.desktopPlatform ?
+                              twoAxisController.xAxis * 200 :  //  for desktop
+                              (accelerometer.reading !== null ? -accelerometer.reading.x * 100 : 0)
+        // handle collision
+        fixture.onContactChanged:
+        {
+            var idother = other.getI
+            var otherEntity = other.getBody().target
+            var otherEntityType = otherEntity.entityType
+            if(otherEntityType==="Fly"||otherEntityType==="Fish")
+            {
+                soundCoin.play()
+                score+=1
+                otherEntity.setNewPossition()
+            }
+            if(otherEntityType === "Border")
+            {
+                frogEntity.die()
+            }
+            if(otherEntityType === "Bird")
+            {
+                frogEntity.die()
+                otherEntity.y=0;
+            }
+            if(otherEntityType === "leaf"&&frogEntity.state == "falling"&&gameScene.state=="playing")
+            {
                 frogCollider.linearVelocity.y = -400
                 otherEntity.playWobbleAnimation()
-             }            
-      }
+            }
+        }
     }
     function die()
-    {        
+    {
         soundFrog.play()
         frogEntity.x = gameScene.width/2
         frogEntity.y= 220
@@ -99,7 +99,7 @@ EntityBase
         gameNetwork.reportScore(score)
         score=0
         gameScene.state="gameOver"
-
+        gameWindow.state = "gameOver"
     }
     onYChanged: {
         if(y < 200) {
