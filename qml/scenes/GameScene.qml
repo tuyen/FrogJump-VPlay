@@ -12,6 +12,9 @@ BaseScene{
     property int  level: 0
     property double frogscale: 0.15
     state:"start"
+
+    Component.onCompleted: gameNetwork.incrementAchievement("5opens")
+
     SoundEffectVPlay {
         id: sounBackground
         source: "../../assets/snow-lullaby.wav"
@@ -190,12 +193,19 @@ BaseScene{
     onScoreChanged:
     {        
         level =score/20
+        if(score > 450)
+            gameNetwork.incrementAchievement("growth")
+        if(score > 500)
+            gameNetwork.incrementAchievement("king")
     }
     onLevelChanged:
     {
         soundcroak.play()
         frogscale=0.15+0.02*level
         if(frogscale>0.6)
+        {
+
             frogscale=0.6
+        }
     }
 }

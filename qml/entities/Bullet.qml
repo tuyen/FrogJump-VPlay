@@ -12,47 +12,49 @@ EntityBase
     }
     BoxCollider
     {
-      id: flygCollider
-      width: 5 // width of the frog collider
-      height: 5 // height of the frog collider
-      bodyType: Body.Dynamic // only Dynamic bodies can collide with each other
-      collisionTestingOnlyMode: true // collisions are detected, but no physics are applied to the colliding bodies
-      fixture.onBeginContact:
-      {
-        var otherEntity = other.getBody().target
-        var otherEntityType = otherEntity.entityType
+        id: flygCollider
+        width: 5 // width of the frog collider
+        height: 5 // height of the frog collider
+        bodyType: Body.Dynamic // only Dynamic bodies can collide with each other
+        collisionTestingOnlyMode: true // collisions are detected, but no physics are applied to the colliding bodies
+        fixture.onBeginContact:
+        {
+            var otherEntity = other.getBody().target
+            var otherEntityType = otherEntity.entityType
 
-        if(otherEntityType === "Shark")
-        {
-          bullet.visible=false
-          otherEntity.y-=gameScene.height*2
-          otherEntity.x = utils.generateRandomValueBetween(0,gameScene.width-50)
-          score+=10
-            soundOrc.play()
+            if(otherEntityType === "Shark")
+            {
+                bullet.visible=false
+                otherEntity.y-=gameScene.height*2
+                otherEntity.x = utils.generateRandomValueBetween(0,gameScene.width-50)
+                score+=10
+                gameNetwork.incrementAchievement("killlFish")
+                soundOrc.play()
+            }
+            if(otherEntityType ==="Bird")
+            {
+                bullet.visible=false
+                otherEntity.y-=gameScene.height*2
+                otherEntity.x = utils.generateRandomValueBetween(0,gameScene.width-50)
+                score+=5
+                gameNetwork.incrementAchievement("killbird")
+                soundOrc.play()
+            }
         }
-        if(otherEntityType ==="Bird")
-        {
-          bullet.visible=false
-          otherEntity.y-=gameScene.height*2
-          otherEntity.x = utils.generateRandomValueBetween(0,gameScene.width-50)
-          score+=5
-            soundOrc.play()
-        }
-      }
     }
     MovementAnimation {
-      id: movement
-      target: bullet
-      property: "y"
-      velocity:  frog.impulse / 2 // impulse is y velocity of the frog
-      running: frog.y < 210 // move only when the frog is jumping high enough
+        id: movement
+        target: bullet
+        property: "y"
+        velocity:  frog.impulse / 2 // impulse is y velocity of the frog
+        running: frog.y < 210 // move only when the frog is jumping high enough
     }
     MovementAnimation {
-      id: movementy
-      target: bullet
-      property: "y"
-      velocity:  -300 // impulse is y velocity of the frog
-      running: true// move only when the frog is jumping high enough
+        id: movementy
+        target: bullet
+        property: "y"
+        velocity:  -300 // impulse is y velocity of the frog
+        running: true// move only when the frog is jumping high enough
     }
     onYChanged: {
         if(y<0)

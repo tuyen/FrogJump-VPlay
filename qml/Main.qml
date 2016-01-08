@@ -19,6 +19,59 @@ GameWindow {
         gameId: 212
         secret: "FrogJumping"
         gameNetworkView: frogNetworkView
+        achievements: [
+            Achievement {
+                key: "5opens"
+                name: "Game Opener"
+                iconSource: "../assets/frog-jumping.png"
+                target: 5
+                points: 10
+                description: "Open this game 5 times"
+            },
+            Achievement {
+                key: "die"
+                name: "Difficult gaming?"
+                iconSource: "../assets/achievementImage.png"
+                target: 100
+                points: 20
+                description: "Die 100 times"
+            },Achievement {
+                key: "growth"
+                name: "Bigger & Bigger"
+                iconSource: "../assets/frog.png"
+                target: 5
+                points: 30
+                description: "Growth up 5 times"
+            },Achievement {
+                key: "king"
+                name: "Be the best"
+                iconSource: "../assets/king.png"
+                target: 1
+                points: 100
+                description: "Get scores over 500 points"
+            },Achievement {
+                key: "killfish"
+                name: "Dick Frog"
+                iconSource: "../assets/killfish.png"
+                target: 1
+                points: 50
+                description: "Eating over 500 small fish"
+            },Achievement {
+                key: "killbird"
+                name: "Nothing to be scare!!!"
+                iconSource: "../assets/killbird.png"
+                target: 1
+                points: 50
+                description: "Killing over 100 angry birds"
+            },Achievement {
+                key: "killlFish"
+                name: "Lord of the marsh!!!"
+                iconSource: "../assets/killlfish.png"
+                target: 1
+                points: 200
+                description: "Killing over 200 angry birds and big fishes"
+            }
+        ]
     }
     MenuScene{
         id: menuScene
