@@ -8,6 +8,8 @@ BaseScene{
     height: 480
     property int score: 0
     property int lastscore: 0
+
+    property int  level: 0
     property double frogscale: 0.15
     state:"start"
     SoundEffectVPlay {
@@ -186,10 +188,13 @@ BaseScene{
         visible: gameScene.state !== "playing"
     }
     onScoreChanged:
+    {        
+        level =score/20
+    }
+    onLevelChanged:
     {
-        if(0.15+0.02*(score/20)>frogscale)
-            soundcroak.play()
-        frogscale=0.15+0.02*(score/20)
+        soundcroak.play()
+        frogscale=0.15+0.02*level
         if(frogscale>0.6)
             frogscale=0.6
     }
