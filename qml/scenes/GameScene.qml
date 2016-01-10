@@ -163,12 +163,12 @@ BaseScene{
         y: gameScene.height/2 + 50
     }
 
-    Border
-    {
-        id: border
-        x: -gameScene.width * 2
-        y: gameScene.height // subtract a small value to make the border just visible in your scene
-    }
+//    Border
+//    {
+//        id: border
+//        x: -gameScene.width * 2
+//        y: gameScene.height // subtract a small value to make the border just visible in your scene
+//    }
     Image {
         id: scoreCounter
         source: "../../assets/scoreCounter.png"

@@ -79,10 +79,10 @@ EntityBase
                 otherEntity.setNewPossition()
                 gameNetwork.incrementAchievement("killfish")
             }
-            if(otherEntityType === "Border")
+            /*if(otherEntityType === "Border")
             {
                 frogEntity.die()
-            }
+            }*/
             if(otherEntityType === "Bird"||otherEntityType==="Shark")
             {
                 frogEntity.die()

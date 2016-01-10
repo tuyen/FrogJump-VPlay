@@ -62,13 +62,10 @@ EntityBase {
                 oldLeafCollider.linearVelocity.y = 10
                 oldLeafCollider.collisionTestingOnlyMode= false
             }
-            if(otherEntityType === "Border")
-            {
-              oldLeafEntity.x = utils.generateRandomValueBetween(32, gameScene.width - 64) // generate random x
-              oldLeafEntity.y = 0 // the top of the screen
-              oldLeafEntity.state="default"
-                oldLeafCollider.collisionTestingOnlyMode= true
-            }
+//            if(otherEntityType === "Border")
+//            {
+
+//            }
         }
     }
     MovementAnimation
@@ -78,5 +75,14 @@ EntityBase {
       property: "y"
       velocity:  frog.impulse / 2 // impulse is y velocity of the frog
       running: frog.y < 210 // move only when the frog is jumping high enough
+    }
+    onYChanged: {
+         if(y > gameScene.height+10)
+         {
+             oldLeafEntity.x = utils.generateRandomValueBetween(32, gameScene.width - 64) // generate random x
+             oldLeafEntity.y = 0 // the top of the screen
+             oldLeafEntity.state="default"
+               oldLeafCollider.collisionTestingOnlyMode= true
+         }
     }
 }

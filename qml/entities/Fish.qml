@@ -47,11 +47,11 @@ EntityBase
           var otherEntity = other.getBody().target
           var otherEntityType = otherEntity.entityType
 
-          if(otherEntityType === "Border")
-          {
-            fish.x = utils.generateRandomValueBetween(32, gameScene.width - 64) // generate random x
-            fish.y = 0 // the top of the screen
-          }
+//          if(otherEntityType === "Border")
+//          {
+//            fish.x = utils.generateRandomValueBetween(32, gameScene.width - 64) // generate random x
+//            fish.y = 0 // the top of the screen
+//          }
           if(otherEntityType === "Shark")
           {
             fish.x = utils.generateRandomValueBetween(32, gameScene.width - 64) // generate random x
@@ -78,6 +78,13 @@ EntityBase
         property: "x"
         velocity: -20
         running: true
+    }
+    onYChanged: {
+         if(y > gameScene.height+10)
+         {
+             fish.x = utils.generateRandomValueBetween(32, gameScene.width - 64) // generate random x
+             fish.y -= gameScene.height // the top of the screen
+         }
     }
     onXChanged:
     {

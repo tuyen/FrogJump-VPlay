@@ -29,17 +29,17 @@ EntityBase
         height: 30 // height of the frog collider
         bodyType: Body.Dynamic // only Dynamic bodies can collide with each other
         collisionTestingOnlyMode: true // collisions are detected, but no physics are applied to the colliding bodies
-        fixture.onBeginContact:
-        {
-          var otherEntity = other.getBody().target
-          var otherEntityType = otherEntity.entityType
+//        fixture.onBeginContact:
+//        {
+//          var otherEntity = other.getBody().target
+//          var otherEntityType = otherEntity.entityType
 
-          if(otherEntityType === "Border"||otherEntityType === "Shark")
-          {
-            bird.x = utils.generateRandomValueBetween(32, gameScene.width - 64) // generate random x
-            bird.y = -gameScene.height*1.5 // the top of the screen
-          }
-        }
+//          if(otherEntityType === "Border"||otherEntityType === "Shark")
+//          {
+//            bird.x = utils.generateRandomValueBetween(32, gameScene.width - 64) // generate random x
+//            bird.y = -gameScene.height*1.5 // the top of the screen
+//          }
+//        }
 
     }
     MovementAnimation {
@@ -49,5 +49,11 @@ EntityBase
       velocity:  frog.impulse / 2 // impulse is y velocity of the frog
       running: frog.y < 210 // move only when the frog is jumping high enough
     }
-
+    onYChanged: {
+         if(y > gameScene.height+10)
+         {
+             bird.x = utils.generateRandomValueBetween(32, gameScene.width - 64) // generate random x
+             bird.y -= gameScene.height // the top of the screen
+         }
+    }
 }
